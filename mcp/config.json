@@ -1,0 +1,66 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {}
+    },
+    "figma": {
+      "type": "sse",
+      "url": "http://127.0.0.1:3845/sse"
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "token",
+        "SLACK_TEAM_ID": "team_id"
+      }
+    },
+    "mcp-atlassian": {
+      "type": "sse",
+      "url": "https://mcp.atlassian.com/v1/sse"
+    },
+    "time": {
+      "command": "uvx",
+      "args": ["mcp-server-time"]
+    },
+    "serena": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "/Users/user_name/Desktop/code/project_name"
+      ],
+      "env": {}
+    },
+    "git": {
+      "command": "npx",
+      "args": ["@cyanheads/git-mcp-server"],
+      "env": {
+        "MCP_LOG_LEVEL": "info",
+        "GIT_SIGN_COMMITS": "true",
+        "GIT_WORKING_DIR": "working_dir"
+      }
+    },
+    "bitbucket": {
+      "command": "npx",
+      "args": ["@aashari/mcp-server-atlassian-bitbucket"],
+      "env": {
+        "ATLASSIAN_BITBUCKET_USERNAME": "username",
+        "ATLASSIAN_BITBUCKET_APP_PASSWORD": "app_password"
+      }
+    },
+    "context7": {
+      "type": "sse",
+      "url": "https://mcp.context7.com/sse"
+    }
+  }
+}
